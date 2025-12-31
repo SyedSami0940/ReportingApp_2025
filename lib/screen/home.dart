@@ -210,11 +210,11 @@ class _HomeScreenState extends State<HomeScreen> {
               pw.Table(
                 border: pw.TableBorder.all(width: 0.5),
                 columnWidths: {
-                  0: const pw.FixedColumnWidth(30),
-                  1: const pw.FixedColumnWidth(40),
-                  2: const pw.FixedColumnWidth(79.5),
-                  3: const pw.FixedColumnWidth(55),
-                  4: const pw.FixedColumnWidth(60),
+                  0: const pw.FixedColumnWidth(22),
+                  1: const pw.FixedColumnWidth(24),
+                  2: const pw.FixedColumnWidth(65),
+                  3: const pw.FixedColumnWidth(43),
+                  4: const pw.FixedColumnWidth(43),
                 },
                 children: [
                   // 🔹 Header Row 1
@@ -227,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: pw.Text(
                           "S.No",
                           style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 7),
+                              fontWeight: pw.FontWeight.bold, fontSize: 6),
                           textAlign: pw.TextAlign.center,
                         ),
                         // We'll leave its spot blank in next header row
@@ -236,11 +236,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       // Account Title (merged vertically)
                       pw.Container(
                         alignment: pw.Alignment.center,
-                        padding: const pw.EdgeInsets.only(top: 4, bottom: 4),
+                        padding: const pw.EdgeInsets.all(2),
                         child: pw.Text(
                           "Node No",
                           style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 7),
+                              fontWeight: pw.FontWeight.bold, fontSize: 6),
                           textAlign: pw.TextAlign.center,
                         ),
                       ),
@@ -250,7 +250,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: pw.Text(
                           "Product Name",
                           style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 7),
+                              fontWeight: pw.FontWeight.bold, fontSize: 6),
                           textAlign: pw.TextAlign.center,
                         ),
                       ),
@@ -260,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: pw.Text(
                           "Quality",
                           style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 7),
+                              fontWeight: pw.FontWeight.bold, fontSize: 6),
                           textAlign: pw.TextAlign.center,
                         ),
                       ),
@@ -270,16 +270,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: pw.Text(
                           "Type Name",
                           style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 7),
+                              fontWeight: pw.FontWeight.bold, fontSize: 6),
                           textAlign: pw.TextAlign.center,
                         ),
                       ),
-                      // "Opening" spans two columns → we use a nested table
+                      // "Local Sales" spans two columns → we use a nested table
                       pw.Table(
                         columnWidths: {
                           0: pw.FixedColumnWidth(44),
-                          1: pw.FixedColumnWidth(50),
-                          2: pw.FixedColumnWidth(45),
+                          1: pw.FixedColumnWidth(54),
+                          2: pw.FixedColumnWidth(40),
                           3: pw.FixedColumnWidth(50),
                           4: pw.FixedColumnWidth(30),
                           5: pw.FixedColumnWidth(40),
@@ -295,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   "Local Sales",
                                   style: pw.TextStyle(
                                       fontWeight: pw.FontWeight.bold,
-                                      fontSize: 7),
+                                      fontSize: 6),
                                   textAlign: pw.TextAlign.center,
                                 ),
 
@@ -380,8 +380,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       pw.Table(
                         columnWidths: {
                           0: pw.FixedColumnWidth(44),
-                          1: pw.FixedColumnWidth(50),
-                          2: pw.FixedColumnWidth(45),
+                          1: pw.FixedColumnWidth(54),
+                          2: pw.FixedColumnWidth(40),
                           3: pw.FixedColumnWidth(50),
                           4: pw.FixedColumnWidth(30),
                           5: pw.FixedColumnWidth(40),
@@ -397,7 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   "Ready Sales",
                                   style: pw.TextStyle(
                                       fontWeight: pw.FontWeight.bold,
-                                      fontSize: 7),
+                                      fontSize: 6),
                                   textAlign: pw.TextAlign.center,
                                 ),
 
@@ -481,10 +481,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       //Exprot Sales nested table
                       pw.Table(
                         columnWidths: {
-                          0: pw.FixedColumnWidth(40),
-                          1: pw.FixedColumnWidth(45),
-                          2: pw.FixedColumnWidth(30),
+                          0: pw.FixedColumnWidth(44),
+                          1: pw.FixedColumnWidth(50),
+                          2: pw.FixedColumnWidth(45),
                           3: pw.FixedColumnWidth(50),
+                          4: pw.FixedColumnWidth(30),
+                          5: pw.FixedColumnWidth(40),
                         },
                         border: pw.TableBorder.all(width: 0),
                         children: [
@@ -492,12 +494,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               pw.Container(
                                 alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(3),
+                                padding: const pw.EdgeInsets.all(5),
                                 child: pw.Text(
                                   "Exprot Sales",
                                   style: pw.TextStyle(
                                       fontWeight: pw.FontWeight.bold,
-                                      fontSize: 7),
+                                      fontSize: 6),
                                   textAlign: pw.TextAlign.center,
                                 ),
 
@@ -514,7 +516,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: pw.Text(
                                   "No Of Bags",
                                   style: pw.TextStyle(
-                                      fontSize: 7,
+                                      fontSize: 6,
                                       fontWeight: pw.FontWeight.bold),
                                   textAlign: pw.TextAlign.center,
                                 ),
@@ -525,7 +527,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: pw.Text(
                                   "Net Weight KGs",
                                   style: pw.TextStyle(
-                                      fontSize: 7,
+                                      fontSize: 6,
                                       fontWeight: pw.FontWeight.bold),
                                   textAlign: pw.TextAlign.center,
                                 ),
@@ -547,7 +549,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: pw.Text(
                                   "Amount",
                                   style: pw.TextStyle(
-                                      fontSize: 7,
+                                      fontSize: 6,
                                       fontWeight: pw.FontWeight.bold),
                                   textAlign: pw.TextAlign.center,
                                 ),
@@ -593,12 +595,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               pw.Container(
                                 alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
+                                padding: const pw.EdgeInsets.all(8.5),
                                 child: pw.Text(
                                   "POS",
                                   style: pw.TextStyle(
                                       fontWeight: pw.FontWeight.bold,
-                                      fontSize: 7),
+                                      fontSize: 6),
                                   textAlign: pw.TextAlign.center,
                                 ),
 
@@ -615,7 +617,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: pw.Text(
                                   "No Of Bags",
                                   style: pw.TextStyle(
-                                      fontSize: 7,
+                                      fontSize: 6,
                                       fontWeight: pw.FontWeight.bold),
                                   textAlign: pw.TextAlign.center,
                                 ),
@@ -626,7 +628,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: pw.Text(
                                   "Net Weight KGs",
                                   style: pw.TextStyle(
-                                      fontSize: 7,
+                                      fontSize: 6,
                                       fontWeight: pw.FontWeight.bold),
                                   textAlign: pw.TextAlign.center,
                                 ),
@@ -648,7 +650,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: pw.Text(
                                   "Amount",
                                   style: pw.TextStyle(
-                                      fontSize: 7,
+                                      fontSize: 6,
                                       fontWeight: pw.FontWeight.bold),
                                   textAlign: pw.TextAlign.center,
                                 ),
@@ -691,13 +693,13 @@ class _HomeScreenState extends State<HomeScreen> {
               pw.Table(
                 border: pw.TableBorder.all(width: 0.5),
                 columnWidths: {
-                  0: const pw.FixedColumnWidth(9),
-                  1: const pw.FixedColumnWidth(11.5),
-                  2: const pw.FixedColumnWidth(23.5),
-                  3: const pw.FixedColumnWidth(16),
-                  4: const pw.FixedColumnWidth(17),
+                  0: const pw.FixedColumnWidth(6.5),
+                  1: const pw.FixedColumnWidth(6.7),
+                  2: const pw.FixedColumnWidth(22),
+                  3: const pw.FixedColumnWidth(14),
+                  4: const pw.FixedColumnWidth(14.5),
                   //local sales
-                  5: const pw.FixedColumnWidth(18),
+                  5: const pw.FixedColumnWidth(10),
                   6: const pw.FixedColumnWidth(18),
                   7: const pw.FixedColumnWidth(11),
                   8: const pw.FixedColumnWidth(18),
