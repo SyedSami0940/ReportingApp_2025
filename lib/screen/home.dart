@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     {
       "S.No": "1",
       "Node No": "1",
-      "Product Name": "IRRI-6 10%",
+      "Product Name": "IRRI-6 10% - RIZMARACANA PINK",
       "Quality": "WHITE-FG",
       "Type Name": "FINISHED RICE",
       "No Of Bags": "46,416",
@@ -125,8 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       fileName: "Product Sales Report",
                       generatePdf:
                           generateProductsalesReport(reportList, context),
-                      // generatePdf: rpt_marvel.generatePurchaseReport(
-                      //     reportList, context),
+                      // generatePdf: generatePurchaseReport(reportList, context),
                     ),
                   ),
                 );
@@ -207,507 +206,513 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ]),
               pw.SizedBox(height: 10),
-              pw.Table(
-                border: pw.TableBorder.all(width: 0.5),
-                columnWidths: {
-                  0: const pw.FixedColumnWidth(22),
-                  1: const pw.FixedColumnWidth(24),
-                  2: const pw.FixedColumnWidth(65),
-                  3: const pw.FixedColumnWidth(43),
-                  4: const pw.FixedColumnWidth(43),
-                },
-                children: [
-                  // 🔹 Header Row 1
-                  pw.TableRow(
-                    children: [
-                      // Account Code (merged vertically)
-                      pw.Container(
-                        alignment: pw.Alignment.center,
-                        padding: const pw.EdgeInsets.only(top: 4, bottom: 4),
-                        child: pw.Text(
-                          "S.No",
-                          style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 6),
-                          textAlign: pw.TextAlign.center,
+              pw.Container(
+                color: PdfColors.grey300,
+                child: pw.Table(
+                  border: pw.TableBorder.all(width: 0.5),
+                  columnWidths: {
+                    0: const pw.FixedColumnWidth(15), // S.No
+                    1: const pw.FixedColumnWidth(15), // Node
+                    2: const pw.FixedColumnWidth(40), // Product
+                    3: const pw.FixedColumnWidth(45), // Quality
+                    4: const pw.FixedColumnWidth(45), // Type
+                  },
+                  children: [
+                    // 🔹 Header Row 1
+                    pw.TableRow(
+                      children: [
+                        // Account Code (merged vertically)
+                        pw.Container(
+                          alignment: pw.Alignment.center,
+                          color: PdfColors.grey300,
+                          padding: const pw.EdgeInsets.only(top: 4, bottom: 4),
+                          child: pw.Text(
+                            "S.No",
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold, fontSize: 4),
+                            textAlign: pw.TextAlign.center,
+                          ),
+                          // We'll leave its spot blank in next header row
                         ),
-                        // We'll leave its spot blank in next header row
-                      ),
 
-                      // Account Title (merged vertically)
-                      pw.Container(
-                        alignment: pw.Alignment.center,
-                        padding: const pw.EdgeInsets.all(2),
-                        child: pw.Text(
-                          "Node No",
-                          style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 6),
-                          textAlign: pw.TextAlign.center,
+                        // Account Title (merged vertically)
+                        pw.Container(
+                          alignment: pw.Alignment.center,
+                          padding: const pw.EdgeInsets.all(2),
+                          child: pw.Text(
+                            "Node No",
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold, fontSize: 4),
+                            textAlign: pw.TextAlign.center,
+                          ),
                         ),
-                      ),
-                      pw.Container(
-                        alignment: pw.Alignment.center,
-                        padding: const pw.EdgeInsets.all(4),
-                        child: pw.Text(
-                          "Product Name",
-                          style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 6),
-                          textAlign: pw.TextAlign.center,
+                        pw.Container(
+                          alignment: pw.Alignment.center,
+                          padding: const pw.EdgeInsets.all(4),
+                          child: pw.Text(
+                            "Product Name",
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold, fontSize: 5),
+                            textAlign: pw.TextAlign.center,
+                          ),
                         ),
-                      ),
-                      pw.Container(
-                        alignment: pw.Alignment.center,
-                        padding: const pw.EdgeInsets.only(top: 4, bottom: 4),
-                        child: pw.Text(
-                          "Quality",
-                          style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 6),
-                          textAlign: pw.TextAlign.center,
+                        pw.Container(
+                          alignment: pw.Alignment.center,
+                          padding: const pw.EdgeInsets.only(top: 4, bottom: 4),
+                          child: pw.Text(
+                            "Quality",
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold, fontSize: 6),
+                            textAlign: pw.TextAlign.center,
+                          ),
                         ),
-                      ),
-                      pw.Container(
-                        alignment: pw.Alignment.center,
-                        padding: const pw.EdgeInsets.only(top: 4, bottom: 4),
-                        child: pw.Text(
-                          "Type Name",
-                          style: pw.TextStyle(
-                              fontWeight: pw.FontWeight.bold, fontSize: 6),
-                          textAlign: pw.TextAlign.center,
+                        pw.Container(
+                          alignment: pw.Alignment.center,
+                          padding: const pw.EdgeInsets.only(top: 4, bottom: 4),
+                          child: pw.Text(
+                            "Type Name",
+                            style: pw.TextStyle(
+                                fontWeight: pw.FontWeight.bold, fontSize: 6),
+                            textAlign: pw.TextAlign.center,
+                          ),
                         ),
-                      ),
-                      // "Local Sales" spans two columns → we use a nested table
-                      pw.Table(
-                        columnWidths: {
-                          0: pw.FixedColumnWidth(44),
-                          1: pw.FixedColumnWidth(54),
-                          2: pw.FixedColumnWidth(40),
-                          3: pw.FixedColumnWidth(50),
-                          4: pw.FixedColumnWidth(30),
-                          5: pw.FixedColumnWidth(40),
-                        },
-                        border: pw.TableBorder.all(width: 0),
-                        children: [
-                          pw.TableRow(
-                            children: [
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Local Sales",
-                                  style: pw.TextStyle(
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 6),
-                                  textAlign: pw.TextAlign.center,
+                        // "Local Sales" spans two columns → we use a nested table
+                        pw.Table(
+                          columnWidths: {
+                            // Local Sales (4)
+                            0: const pw.FixedColumnWidth(40),
+                            1: const pw.FixedColumnWidth(38),
+                            2: const pw.FixedColumnWidth(45),
+                            3: const pw.FixedColumnWidth(32),
+                            4: const pw.FixedColumnWidth(45),
+                          },
+                          border: pw.TableBorder.all(width: 0),
+                          children: [
+                            pw.TableRow(
+                              children: [
+                                pw.Container(
+                                  width: double.infinity,
+                                  padding: const pw.EdgeInsets.all(6),
+                                  color: PdfColors.grey300,
+                                  child: pw.Center(
+                                    child: pw.Text(
+                                      'Local Sales',
+                                      style: pw.TextStyle(
+                                        fontWeight: pw.FontWeight.bold,
+                                        fontSize: 6,
+                                      ),
+                                    ),
+                                  ),
                                 ),
+                                // filler
+                              ],
+                            ),
+                            pw.TableRow(
+                              children: [
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "No Of Bags",
+                                    style: pw.TextStyle(
+                                        fontSize: 4.5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Net Weight KGs",
+                                    style: pw.TextStyle(
+                                        fontSize: 5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Vehicles",
+                                    style: pw.TextStyle(
+                                        fontSize: 5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Amount",
+                                    style: pw.TextStyle(
+                                        fontSize: 4,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                // pw.Container(
+                                //   alignment: pw.Alignment.center,
+                                //   padding: const pw.EdgeInsets.all(6),
+                                //   child: pw.Text(
+                                //     "Vehicles",
+                                //     style: pw.TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: pw.FontWeight.bold),
+                                //     textAlign: pw.TextAlign.center,
+                                //   ),
+                                // ),
+                                // pw.Container(
+                                //   alignment: pw.Alignment.center,
+                                //   padding: const pw.EdgeInsets.all(6),
+                                //   child: pw.Text(
+                                //     "Amount",
+                                //     style: pw.TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: pw.FontWeight.bold),
+                                //     textAlign: pw.TextAlign.center,
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        // ready sale nested table
+                        pw.Table(
+                          columnWidths: {
+                            // Ready Sales (4)
+                            0: const pw.FixedColumnWidth(40),
+                            1: const pw.FixedColumnWidth(38),
+                            2: const pw.FixedColumnWidth(45),
+                            3: const pw.FixedColumnWidth(32),
+                            4: const pw.FixedColumnWidth(45),
+                          },
+                          border: pw.TableBorder.all(width: 0),
+                          children: [
+                            pw.TableRow(
+                              children: [
+                                pw.Container(
+                                  width: double.infinity,
+                                  padding: const pw.EdgeInsets.all(6),
+                                  color: PdfColors.grey300,
+                                  child: pw.Center(
+                                    child: pw.Text(
+                                      'Ready Sales',
+                                      style: pw.TextStyle(
+                                        fontWeight: pw.FontWeight.bold,
+                                        fontSize: 6,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // filler
+                              ],
+                            ),
+                            pw.TableRow(
+                              children: [
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "No Of Bags",
+                                    style: pw.TextStyle(
+                                        fontSize: 4.5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Net Weight KGs",
+                                    style: pw.TextStyle(
+                                        fontSize: 5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Vehicles",
+                                    style: pw.TextStyle(
+                                        fontSize: 5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Amount",
+                                    style: pw.TextStyle(
+                                        fontSize: 4,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                // pw.Container(
+                                //   alignment: pw.Alignment.center,
+                                //   padding: const pw.EdgeInsets.all(6),
+                                //   child: pw.Text(
+                                //     "Vehicles",
+                                //     style: pw.TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: pw.FontWeight.bold),
+                                //     textAlign: pw.TextAlign.center,
+                                //   ),
+                                // ),
+                                // pw.Container(
+                                //   alignment: pw.Alignment.center,
+                                //   padding: const pw.EdgeInsets.all(6),
+                                //   child: pw.Text(
+                                //     "Amount",
+                                //     style: pw.TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: pw.FontWeight.bold),
+                                //     textAlign: pw.TextAlign.center,
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        //Exprot Sales nested table
+                        pw.Table(
+                          columnWidths: {
+                            // Export Sales (4)
+                            0: const pw.FixedColumnWidth(40),
+                            1: const pw.FixedColumnWidth(38),
+                            2: const pw.FixedColumnWidth(45),
+                            3: const pw.FixedColumnWidth(32),
+                            4: const pw.FixedColumnWidth(45),
+                          },
+                          border: pw.TableBorder.all(width: 0),
+                          children: [
+                            pw.TableRow(
+                              children: [
+                                pw.Container(
+                                  width: double.infinity,
+                                  padding: const pw.EdgeInsets.all(6),
+                                  color: PdfColors.grey300,
+                                  child: pw.Center(
+                                    child: pw.Text(
+                                      'Export Sales',
+                                      style: pw.TextStyle(
+                                        fontWeight: pw.FontWeight.bold,
+                                        fontSize: 6,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // filler
+                              ],
+                            ),
+                            pw.TableRow(
+                              children: [
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "No Of Bags",
+                                    style: pw.TextStyle(
+                                        fontSize: 4.5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Net Weight KGs",
+                                    style: pw.TextStyle(
+                                        fontSize: 5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Vehicles",
+                                    style: pw.TextStyle(
+                                        fontSize: 5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Amount",
+                                    style: pw.TextStyle(
+                                        fontSize: 4,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
+                                ),
+                                // pw.Container(
+                                //   alignment: pw.Alignment.center,
+                                //   padding: const pw.EdgeInsets.all(6),
+                                //   child: pw.Text(
+                                //     "Vehicles",
+                                //     style: pw.TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: pw.FontWeight.bold),
+                                //     textAlign: pw.TextAlign.center,
+                                //   ),
+                                // ),
+                                // pw.Container(
+                                //   alignment: pw.Alignment.center,
+                                //   padding: const pw.EdgeInsets.all(6),
+                                //   child: pw.Text(
+                                //     "Amount",
+                                //     style: pw.TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: pw.FontWeight.bold),
+                                //     textAlign: pw.TextAlign.center,
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        pw.Table(
+                          columnWidths: {
+                            0: const pw.FixedColumnWidth(40),
+                            1: const pw.FixedColumnWidth(38),
+                            2: const pw.FixedColumnWidth(45),
+                            3: const pw.FixedColumnWidth(32),
+                            4: const pw.FixedColumnWidth(45),
+                          },
+                          border: pw.TableBorder.all(width: 0),
+                          children: [
+                            pw.TableRow(
+                              children: [
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(7.5),
+                                  child: pw.Text(
+                                    "POS",
+                                    style: pw.TextStyle(
+                                        fontWeight: pw.FontWeight.bold,
+                                        fontSize: 6),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
 
-                                // colSpan: 2, // doesn't exist — handled manually
-                              ),
-                              // filler
-                            ],
-                          ),
-                          pw.TableRow(
-                            children: [
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "No Of Bags",
-                                  style: pw.TextStyle(
-                                      fontSize: 7,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
+                                  // colSpan: 2, // doesn't exist — handled manually
                                 ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Net Weight KGs",
-                                  style: pw.TextStyle(
-                                      fontSize: 7,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
+                                // filler
+                              ],
+                            ),
+                            pw.TableRow(
+                              children: [
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "No Of Bags",
+                                    style: pw.TextStyle(
+                                        fontSize: 4.5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
                                 ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Vehicles",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Net Weight KGs",
+                                    style: pw.TextStyle(
+                                        fontSize: 5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
                                 ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Amount",
-                                  style: pw.TextStyle(
-                                      fontSize: 7,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Vehicles",
+                                    style: pw.TextStyle(
+                                        fontSize: 5,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
                                 ),
-                              ),
-                              // pw.Container(
-                              //   alignment: pw.Alignment.center,
-                              //   padding: const pw.EdgeInsets.all(6),
-                              //   child: pw.Text(
-                              //     "Vehicles",
-                              //     style: pw.TextStyle(
-                              //         fontSize: 10,
-                              //         fontWeight: pw.FontWeight.bold),
-                              //     textAlign: pw.TextAlign.center,
-                              //   ),
-                              // ),
-                              // pw.Container(
-                              //   alignment: pw.Alignment.center,
-                              //   padding: const pw.EdgeInsets.all(6),
-                              //   child: pw.Text(
-                              //     "Amount",
-                              //     style: pw.TextStyle(
-                              //         fontSize: 10,
-                              //         fontWeight: pw.FontWeight.bold),
-                              //     textAlign: pw.TextAlign.center,
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      // ready sale nested table
-                      pw.Table(
-                        columnWidths: {
-                          0: pw.FixedColumnWidth(44),
-                          1: pw.FixedColumnWidth(54),
-                          2: pw.FixedColumnWidth(40),
-                          3: pw.FixedColumnWidth(50),
-                          4: pw.FixedColumnWidth(30),
-                          5: pw.FixedColumnWidth(40),
-                        },
-                        border: pw.TableBorder.all(width: 0),
-                        children: [
-                          pw.TableRow(
-                            children: [
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Ready Sales",
-                                  style: pw.TextStyle(
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 6),
-                                  textAlign: pw.TextAlign.center,
+                                pw.Container(
+                                  alignment: pw.Alignment.center,
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    "Amount",
+                                    style: pw.TextStyle(
+                                        fontSize: 4,
+                                        fontWeight: pw.FontWeight.bold),
+                                    textAlign: pw.TextAlign.center,
+                                  ),
                                 ),
+                                // pw.Container(
+                                //   alignment: pw.Alignment.center,
+                                //   padding: const pw.EdgeInsets.all(6),
+                                //   child: pw.Text(
+                                //     "Vehicles",
+                                //     style: pw.TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: pw.FontWeight.bold),
+                                //     textAlign: pw.TextAlign.center,
+                                //   ),
+                                // ),
+                                // pw.Container(
+                                //   alignment: pw.Alignment.center,
+                                //   padding: const pw.EdgeInsets.all(6),
+                                //   child: pw.Text(
+                                //     "Amount",
+                                //     style: pw.TextStyle(
+                                //         fontSize: 10,
+                                //         fontWeight: pw.FontWeight.bold),
+                                //     textAlign: pw.TextAlign.center,
+                                //   ),
+                                // ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
 
-                                // colSpan: 2, // doesn't exist — handled manually
-                              ),
-                              // filler
-                            ],
-                          ),
-                          pw.TableRow(
-                            children: [
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "No Of Bags",
-                                  style: pw.TextStyle(
-                                      fontSize: 7,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Net Weight KGs",
-                                  style: pw.TextStyle(
-                                      fontSize: 7,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Vehicles",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Amount",
-                                  style: pw.TextStyle(
-                                      fontSize: 7,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              // pw.Container(
-                              //   alignment: pw.Alignment.center,
-                              //   padding: const pw.EdgeInsets.all(6),
-                              //   child: pw.Text(
-                              //     "Vehicles",
-                              //     style: pw.TextStyle(
-                              //         fontSize: 10,
-                              //         fontWeight: pw.FontWeight.bold),
-                              //     textAlign: pw.TextAlign.center,
-                              //   ),
-                              // ),
-                              // pw.Container(
-                              //   alignment: pw.Alignment.center,
-                              //   padding: const pw.EdgeInsets.all(6),
-                              //   child: pw.Text(
-                              //     "Amount",
-                              //     style: pw.TextStyle(
-                              //         fontSize: 10,
-                              //         fontWeight: pw.FontWeight.bold),
-                              //     textAlign: pw.TextAlign.center,
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      //Exprot Sales nested table
-                      pw.Table(
-                        columnWidths: {
-                          0: pw.FixedColumnWidth(44),
-                          1: pw.FixedColumnWidth(50),
-                          2: pw.FixedColumnWidth(45),
-                          3: pw.FixedColumnWidth(50),
-                          4: pw.FixedColumnWidth(30),
-                          5: pw.FixedColumnWidth(40),
-                        },
-                        border: pw.TableBorder.all(width: 0),
-                        children: [
-                          pw.TableRow(
-                            children: [
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(5),
-                                child: pw.Text(
-                                  "Exprot Sales",
-                                  style: pw.TextStyle(
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 6),
-                                  textAlign: pw.TextAlign.center,
-                                ),
+                    // 🔹 Header Row 2 (for Debit / Credit under Opening)
 
-                                // colSpan: 2, // doesn't exist — handled manually
-                              ),
-                              // filler
-                            ],
-                          ),
-                          pw.TableRow(
-                            children: [
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "No Of Bags",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Net Weight KGs",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Vehicles",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Amount",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              // pw.Container(
-                              //   alignment: pw.Alignment.center,
-                              //   padding: const pw.EdgeInsets.all(6),
-                              //   child: pw.Text(
-                              //     "Vehicles",
-                              //     style: pw.TextStyle(
-                              //         fontSize: 10,
-                              //         fontWeight: pw.FontWeight.bold),
-                              //     textAlign: pw.TextAlign.center,
-                              //   ),
-                              // ),
-                              // pw.Container(
-                              //   alignment: pw.Alignment.center,
-                              //   padding: const pw.EdgeInsets.all(6),
-                              //   child: pw.Text(
-                              //     "Amount",
-                              //     style: pw.TextStyle(
-                              //         fontSize: 10,
-                              //         fontWeight: pw.FontWeight.bold),
-                              //     textAlign: pw.TextAlign.center,
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      pw.Table(
-                        columnWidths: {
-                          0: pw.FixedColumnWidth(44),
-                          1: pw.FixedColumnWidth(50),
-                          2: pw.FixedColumnWidth(45),
-                          3: pw.FixedColumnWidth(50),
-                          4: pw.FixedColumnWidth(30),
-                          5: pw.FixedColumnWidth(40),
-                        },
-                        border: pw.TableBorder.all(width: 0),
-                        children: [
-                          pw.TableRow(
-                            children: [
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(8.5),
-                                child: pw.Text(
-                                  "POS",
-                                  style: pw.TextStyle(
-                                      fontWeight: pw.FontWeight.bold,
-                                      fontSize: 6),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-
-                                // colSpan: 2, // doesn't exist — handled manually
-                              ),
-                              // filler
-                            ],
-                          ),
-                          pw.TableRow(
-                            children: [
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "No Of Bags",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Net Weight KGs",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Vehicles",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              pw.Container(
-                                alignment: pw.Alignment.center,
-                                padding: const pw.EdgeInsets.all(4),
-                                child: pw.Text(
-                                  "Amount",
-                                  style: pw.TextStyle(
-                                      fontSize: 6,
-                                      fontWeight: pw.FontWeight.bold),
-                                  textAlign: pw.TextAlign.center,
-                                ),
-                              ),
-                              // pw.Container(
-                              //   alignment: pw.Alignment.center,
-                              //   padding: const pw.EdgeInsets.all(6),
-                              //   child: pw.Text(
-                              //     "Vehicles",
-                              //     style: pw.TextStyle(
-                              //         fontSize: 10,
-                              //         fontWeight: pw.FontWeight.bold),
-                              //     textAlign: pw.TextAlign.center,
-                              //   ),
-                              // ),
-                              // pw.Container(
-                              //   alignment: pw.Alignment.center,
-                              //   padding: const pw.EdgeInsets.all(6),
-                              //   child: pw.Text(
-                              //     "Amount",
-                              //     style: pw.TextStyle(
-                              //         fontSize: 10,
-                              //         fontWeight: pw.FontWeight.bold),
-                              //     textAlign: pw.TextAlign.center,
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-
-                  // 🔹 Header Row 2 (for Debit / Credit under Opening)
-
-                  // 🔹 Data Rows
-                ],
+                    // 🔹 Data Rows
+                  ],
+                ),
               ),
               // Table data rows width adjustment
               pw.Table(
                 border: pw.TableBorder.all(width: 0.5),
                 columnWidths: {
-                  0: const pw.FixedColumnWidth(6.5),
-                  1: const pw.FixedColumnWidth(6.7),
-                  2: const pw.FixedColumnWidth(22),
-                  3: const pw.FixedColumnWidth(14),
-                  4: const pw.FixedColumnWidth(14.5),
+                  0: const pw.FixedColumnWidth(6.3),
+                  1: const pw.FixedColumnWidth(6.5),
+                  2: const pw.FixedColumnWidth(17),
+                  3: const pw.FixedColumnWidth(15),
+                  4: const pw.FixedColumnWidth(15),
                   //local sales
                   5: const pw.FixedColumnWidth(10),
-                  6: const pw.FixedColumnWidth(18),
+                  6: const pw.FixedColumnWidth(11.5),
                   7: const pw.FixedColumnWidth(11),
-                  8: const pw.FixedColumnWidth(18),
+                  8: const pw.FixedColumnWidth(11),
                   //ready sales
-                  9: const pw.FixedColumnWidth(17.5),
-                  10: const pw.FixedColumnWidth(31),
-                  11: const pw.FixedColumnWidth(28),
-                  12: const pw.FixedColumnWidth(31.8),
+                  9: const pw.FixedColumnWidth(10),
+                  10: const pw.FixedColumnWidth(11.5),
+                  11: const pw.FixedColumnWidth(11),
+                  12: const pw.FixedColumnWidth(11),
                   //export sales
                   13: const pw.FixedColumnWidth(17.5),
                   14: const pw.FixedColumnWidth(25),
@@ -724,7 +729,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       pw.Container(
                         alignment: pw.Alignment.center,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["S.No"] ?? "",
                           style: pw.TextStyle(fontSize: 6),
@@ -733,7 +738,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerLeft,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Node No"] ?? "",
                           style: pw.TextStyle(fontSize: 6),
@@ -741,15 +746,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerLeft,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(2),
                         child: pw.Text(
                           item["Product Name"] ?? "",
-                          style: pw.TextStyle(fontSize: 6),
+                          style: pw.TextStyle(fontSize: 4),
                         ),
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerLeft,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Quality"] ?? "",
                           style: pw.TextStyle(fontSize: 6),
@@ -757,15 +762,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerLeft,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Type Name"] ?? "",
                           style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
+                      //local sales data
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["No Of Bags"] ?? "",
                           style: pw.TextStyle(fontSize: 6),
@@ -773,7 +779,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Ex Net Weight"] ?? "",
                           style: pw.TextStyle(fontSize: 6),
@@ -781,99 +787,210 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Net Weight KGs"] ?? "",
-                          style: pw.TextStyle(fontSize: 7),
+                          style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Billing Weight"] ?? "",
-                          style: pw.TextStyle(fontSize: 7),
+                          style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Vehicles"] ?? "",
-                          style: pw.TextStyle(fontSize: 7),
+                          style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Amount"] ?? "",
-                          style: pw.TextStyle(fontSize: 7),
+                          style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
+                        child: pw.Text(
+                          item["Amount"] ?? "",
+                          style: pw.TextStyle(fontSize: 6),
+                        ),
+                      ),
+                      pw.Container(
+                        alignment: pw.Alignment.centerRight,
+                        padding: const pw.EdgeInsets.all(3),
+                        child: pw.Text(
+                          item["Amount"] ?? "",
+                          style: pw.TextStyle(fontSize: 6),
+                        ),
+                      ),
+                      pw.Container(
+                        alignment: pw.Alignment.centerRight,
+                        padding: const pw.EdgeInsets.all(3),
+                        child: pw.Text(
+                          item["Amount"] ?? "",
+                          style: pw.TextStyle(fontSize: 6),
+                        ),
+                      ),
+                      pw.Container(
+                        alignment: pw.Alignment.centerRight,
+                        padding: const pw.EdgeInsets.all(3),
+                        child: pw.Text(
+                          item["No Of Bags"] ?? "",
+                          style: pw.TextStyle(fontSize: 6),
+                        ),
+                      ),
+                      pw.Container(
+                        alignment: pw.Alignment.centerRight,
+                        padding: const pw.EdgeInsets.all(3),
+                        child: pw.Text(
+                          item["No Of Bags"] ?? "",
+                          style: pw.TextStyle(fontSize: 6),
+                        ),
+                      ),
+                      pw.Container(
+                        alignment: pw.Alignment.centerRight,
+                        padding: const pw.EdgeInsets.all(3),
+                        child: pw.Text(
+                          item["No Of Bags"] ?? "",
+                          style: pw.TextStyle(fontSize: 6),
+                        ),
+                      ),
+                      pw.Container(
+                        alignment: pw.Alignment.centerRight,
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Out No Of Bags"] ?? "",
-                          style: pw.TextStyle(fontSize: 7),
+                          style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Out Net Weight KGs"] ?? "",
-                          style: pw.TextStyle(fontSize: 7),
+                          style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Out Vehicles"] ?? "",
-                          style: pw.TextStyle(fontSize: 7),
+                          style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
                       pw.Container(
                         alignment: pw.Alignment.centerRight,
-                        padding: const pw.EdgeInsets.all(6),
+                        padding: const pw.EdgeInsets.all(3),
                         child: pw.Text(
                           item["Out Amount"] ?? "",
-                          style: pw.TextStyle(fontSize: 7),
+                          style: pw.TextStyle(fontSize: 6),
                         ),
                       ),
                     ],
                   );
                 }).toList(),
               ),
-              // pw.TableHelper.fromTextArray(
-              //   headers:
-              //       jsonData.isNotEmpty ? jsonData.first.keys.toList() : [],
-              //   data: jsonData
-              //       .map<List<dynamic>>(
-              //           (item) => item.values.map((v) => v.toString()).toList())
-              //       .toList(),
-              //   columnWidths: {
-              //     0: pw.FixedColumnWidth(70),
-              //     1: pw.FixedColumnWidth(170),
-              //     2: pw.FixedColumnWidth(90),
-              //     3: pw.FixedColumnWidth(90),
-              //   },
-              //   headerAlignments: {
-              //     0: pw.Alignment.center,
-              //     1: pw.Alignment.center,
-              //     2: pw.Alignment.center,
-              //     3: pw.Alignment.center,
-              //   },
-              //   cellAlignments: {
-              //     0: pw.Alignment.topLeft,
-              //     1: pw.Alignment.topLeft,
-              //     2: pw.Alignment.topRight,
-              //     3: pw.Alignment.topRight,
-              //   },
-              //   headerStyle: pw.TextStyle(fontWeight: FontWeight.bold),
-              // ),
+              pw.SizedBox(height: 20),
+
+              /// SUMMARY BOX
+              pw.Align(
+                alignment: pw.Alignment.centerRight,
+                child: pw.Container(
+                  width: 420,
+                  decoration: pw.BoxDecoration(
+                    border: pw.Border.all(),
+                  ),
+                  child: pw.Column(
+                    children: [
+                      // Summary Title
+                      pw.Container(
+                        width: double.infinity,
+                        padding: const pw.EdgeInsets.all(6),
+                        color: PdfColors.grey300,
+                        child: pw.Center(
+                          child: pw.Text(
+                            'Summary',
+                            style: pw.TextStyle(
+                              fontWeight: pw.FontWeight.bold,
+                              fontSize: 8,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // Table
+                      pw.Table(
+                        border: pw.TableBorder.all(),
+                        columnWidths: {
+                          0: const pw.FlexColumnWidth(1),
+                          1: const pw.FlexColumnWidth(1),
+                          2: const pw.FlexColumnWidth(1),
+                        },
+                        children: [
+                          // Header Row
+                          pw.TableRow(
+                            decoration: const pw.BoxDecoration(
+                              color: PdfColors.grey200,
+                            ),
+                            children: [
+                              summaryCell('No.Of Bags', isBold: true),
+                              summaryCell('Weight KGs', isBold: true),
+                              summaryCell('MTons', isBold: true),
+                            ],
+                          ),
+
+                          // Value Row
+                          pw.TableRow(
+                            children: [
+                              pw.Align(
+                                alignment: pw.Alignment.bottomRight,
+                                child: pw.Padding(
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    '205,126',
+                                    style: pw.TextStyle(fontSize: 8),
+                                  ),
+                                ),
+                              ),
+                              pw.Align(
+                                alignment: pw.Alignment.bottomRight,
+                                child: pw.Padding(
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    '7,973,105',
+                                    style: pw.TextStyle(fontSize: 8),
+                                  ),
+                                ),
+                              ),
+                              pw.Align(
+                                alignment: pw.Alignment.bottomRight,
+                                child: pw.Padding(
+                                  padding: const pw.EdgeInsets.all(2),
+                                  child: pw.Text(
+                                    '7,973,105',
+                                    style: pw.TextStyle(fontSize: 8),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ];
           },
         ),
@@ -902,499 +1019,545 @@ class _HomeScreenState extends State<HomeScreen> {
       return Uint8List(2);
     }
   }
+
+  // summary row widget
+  pw.Widget summaryCell(String text, {bool isBold = false}) {
+    return pw.Padding(
+      padding: const pw.EdgeInsets.all(6),
+      child: pw.Center(
+        child: pw.Text(
+          text,
+          style: pw.TextStyle(
+            fontWeight: isBold ? pw.FontWeight.bold : pw.FontWeight.normal,
+            fontSize: 8,
+          ),
+        ),
+      ),
+    );
+  }
+
+//report generation function
+  // Future<Uint8List> generatePurchaseReport(
+  //     List<dynamic> jsonData, BuildContext context) async {
+  //   final status = await Permission.storage.request();
+  //   if (!status.isGranted) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(content: Text('Storage permission denied')),
+  //     );
+  //   }
+
+  //   try {
+  //     final pdf = pw.Document();
+  //     final imageData = await rootBundle.load('assets/logob.png');
+  //     final image = pw.MemoryImage(imageData.buffer.asUint8List());
+
+  //     pdf.addPage(
+  //       pw.MultiPage(
+  //         pageFormat: PdfPageFormat.a4.landscape,
+  //         margin: pw.EdgeInsets.fromLTRB(20, 50, 20, 0),
+  //         build: (context) {
+  //           return [
+  //             pw.Row(children: [
+  //               pw.Image(image, width: 80, height: 80),
+  //               pw.SizedBox(
+  //                 width: 30,
+  //               ),
+  //               pw.Container(
+  //                 width: 1450,
+  //                 child: pw.Column(children: [
+  //                   pw.Center(
+  //                     child: pw.Text(
+  //                       'Marvel Agro Commodities',
+  //                       style: pw.TextStyle(
+  //                           fontSize: 23, fontWeight: pw.FontWeight.bold),
+  //                     ),
+  //                   ),
+  //                   pw.Container(
+  //                     color: PdfColors.grey300,
+  //                     child: pw.Center(
+  //                       child: pw.Text(
+  //                         'Product Sales Report',
+  //                         style: pw.TextStyle(
+  //                             fontSize: 21, fontWeight: pw.FontWeight.bold),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                   pw.Container(
+  //                     alignment: pw.Alignment.center,
+  //                     width: 1050,
+  //                     child: pw.Text(
+  //                         "From: 01-Aug-2025, Till Date: 27-Jun-2025",
+  //                         style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
+  //                   )
+  //                 ]),
+  //               )
+  //             ]),
+  //             pw.SizedBox(height: 10),
+  //             pw.Table(
+  //               border: pw.TableBorder.all(width: 0.5),
+  //               columnWidths: {
+  //                 0: const pw.FixedColumnWidth(20),
+  //                 1: const pw.FixedColumnWidth(22),
+  //                 2: const pw.FixedColumnWidth(100),
+  //                 3: const pw.FixedColumnWidth(100),
+  //                 4: const pw.FixedColumnWidth(100),
+  //               },
+  //               children: [
+  //                 // 🔹 Header Row 1
+  //                 pw.TableRow(
+  //                   children: [
+  //                     // Account Code (merged vertically)
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.center,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         "S No",
+  //                         style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+  //                         textAlign: pw.TextAlign.center,
+  //                       ),
+  //                       // We'll leave its spot blank in next header row
+  //                     ),
+
+  //                     // Account Title (merged vertically)
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.center,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         "Node No",
+  //                         style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+  //                         textAlign: pw.TextAlign.center,
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.center,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         "Product Name",
+  //                         style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+  //                         textAlign: pw.TextAlign.center,
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.center,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         "Quality",
+  //                         style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+  //                         textAlign: pw.TextAlign.center,
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.center,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         "Type Name",
+  //                         style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
+  //                         textAlign: pw.TextAlign.center,
+  //                       ),
+  //                     ),
+  //                     // "Opening" spans two columns → we use a nested table
+  //                     pw.Table(
+  //                       columnWidths: {
+  //                         0: pw.FixedColumnWidth(44),
+  //                         1: pw.FixedColumnWidth(50),
+  //                         2: pw.FixedColumnWidth(45),
+  //                         3: pw.FixedColumnWidth(50),
+  //                         4: pw.FixedColumnWidth(30),
+  //                         5: pw.FixedColumnWidth(40),
+  //                       },
+  //                       border: pw.TableBorder.all(width: 0),
+  //                       children: [
+  //                         pw.TableRow(
+  //                           children: [
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "IN-HOUSE PURCHASES",
+  //                                 style: pw.TextStyle(
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+
+  //                               // colSpan: 2, // doesn't exist — handled manually
+  //                             ),
+  //                             // filler
+  //                           ],
+  //                         ),
+  //                         pw.TableRow(
+  //                           children: [
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "No Of Bags",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "Ex Net Weight",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "Net Weight KGs",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "Billing Weight",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "Vehicles",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "Amount",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ],
+  //                     ),
+
+  //                     pw.Table(
+  //                       columnWidths: {
+  //                         0: pw.FixedColumnWidth(40),
+  //                         1: pw.FixedColumnWidth(45),
+  //                         2: pw.FixedColumnWidth(30),
+  //                         3: pw.FixedColumnWidth(50),
+  //                       },
+  //                       border: pw.TableBorder.all(width: 0),
+  //                       children: [
+  //                         pw.TableRow(
+  //                           children: [
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "OUT STATION",
+  //                                 style: pw.TextStyle(
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+
+  //                               // colSpan: 2, // doesn't exist — handled manually
+  //                             ),
+  //                             // filler
+  //                           ],
+  //                         ),
+  //                         pw.TableRow(
+  //                           children: [
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "No Of Bags",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "Net Weight KGs",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "Vehicles",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                             pw.Container(
+  //                               alignment: pw.Alignment.center,
+  //                               padding: const pw.EdgeInsets.all(6),
+  //                               child: pw.Text(
+  //                                 "Amount",
+  //                                 style: pw.TextStyle(
+  //                                     fontSize: 10,
+  //                                     fontWeight: pw.FontWeight.bold),
+  //                                 textAlign: pw.TextAlign.center,
+  //                               ),
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ],
+  //                     ),
+  //                   ],
+  //                 ),
+
+  //                 // 🔹 Header Row 2 (for Debit / Credit under Opening)
+
+  //                 // 🔹 Data Rows
+  //               ],
+  //             ),
+  //             pw.Table(
+  //               border: pw.TableBorder.all(width: 0.5),
+  //               columnWidths: {
+  //                 0: const pw.FixedColumnWidth(12.4),
+  //                 1: const pw.FixedColumnWidth(13.7),
+  //                 2: const pw.FixedColumnWidth(62.5),
+  //                 3: const pw.FixedColumnWidth(62.5),
+  //                 4: const pw.FixedColumnWidth(62.5),
+  //                 5: const pw.FixedColumnWidth(27.5),
+  //                 6: const pw.FixedColumnWidth(31),
+  //                 7: const pw.FixedColumnWidth(28),
+  //                 8: const pw.FixedColumnWidth(31.8),
+  //                 9: const pw.FixedColumnWidth(17.5),
+  //                 10: const pw.FixedColumnWidth(25),
+  //                 11: const pw.FixedColumnWidth(25),
+  //                 12: const pw.FixedColumnWidth(28),
+  //                 13: const pw.FixedColumnWidth(19),
+  //                 14: const pw.FixedColumnWidth(31.6),
+  //               },
+  //               children: reportList.map((item) {
+  //                 return pw.TableRow(
+  //                   children: [
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.center,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["S.No"] ?? "",
+  //                         textAlign: pw.TextAlign.center,
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerLeft,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Node No"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerLeft,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Product Name"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerLeft,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Quality"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerLeft,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Type Name"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["No Of Bags"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Ex Net Weight"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Net Weight KGs"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Billing Weight"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Vehicles"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Amount"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Out No Of Bags"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Out Net Weight KGs"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Out Vehicles"] ?? "",
+  //                       ),
+  //                     ),
+  //                     pw.Container(
+  //                       alignment: pw.Alignment.centerRight,
+  //                       padding: const pw.EdgeInsets.all(6),
+  //                       child: pw.Text(
+  //                         item["Out Amount"] ?? "",
+  //                       ),
+  //                     ),
+  //                   ],
+  //                 );
+  //               }).toList(),
+  //             ),
+  //             // pw.TableHelper.fromTextArray(
+  //             //   headers:
+  //             //       jsonData.isNotEmpty ? jsonData.first.keys.toList() : [],
+  //             //   data: jsonData
+  //             //       .map<List<dynamic>>(
+  //             //           (item) => item.values.map((v) => v.toString()).toList())
+  //             //       .toList(),
+  //             //   columnWidths: {
+  //             //     0: pw.FixedColumnWidth(70),
+  //             //     1: pw.FixedColumnWidth(170),
+  //             //     2: pw.FixedColumnWidth(90),
+  //             //     3: pw.FixedColumnWidth(90),
+  //             //   },
+  //             //   headerAlignments: {
+  //             //     0: pw.Alignment.center,
+  //             //     1: pw.Alignment.center,
+  //             //     2: pw.Alignment.center,
+  //             //     3: pw.Alignment.center,
+  //             //   },
+  //             //   cellAlignments: {
+  //             //     0: pw.Alignment.topLeft,
+  //             //     1: pw.Alignment.topLeft,
+  //             //     2: pw.Alignment.topRight,
+  //             //     3: pw.Alignment.topRight,
+  //             //   },
+  //             //   headerStyle: pw.TextStyle(fontWeight: FontWeight.bold),
+  //             // ),
+  //           ];
+  //         },
+  //       ),
+  //     );
+
+  //     return pdf.save();
+
+  //     // ✅ Save to Downloads
+  //     //   final downloadsDir = Directory('/storage/emulated/0/Download');
+  //     //   if (!await downloadsDir.exists())
+  //     //     await downloadsDir.create(recursive: true);
+
+  //     //   final filePath =
+  //     //       '${downloadsDir.path}/update_after_post_report_${DateTime.now().millisecondsSinceEpoch}.pdf';
+  //     //   final file = File(filePath);
+  //     //   await file.writeAsBytes(await pdf.save());
+
+  //     //   ScaffoldMessenger.of(context).showSnackBar(
+  //     //     SnackBar(content: Text('✅ PDF saved in Downloads: $filePath')),
+  //     //   );
+  //   } catch (e, st) {
+  //     debugPrint('PDF generation error: $e\n$st');
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(content: Text('❌ Error: $e')),
+  //     );
+  //     return Uint8List(2);
+  //   }
+  // }
+
+  //chatgpt generated helper widgets
+  // pw.Widget headerCell(String text) => pw.Container(
+  //       alignment: pw.Alignment.center,
+  //       padding: const pw.EdgeInsets.all(4),
+  //       child: pw.Text(
+  //         text,
+  //         textAlign: pw.TextAlign.center,
+  //         style: pw.TextStyle(fontSize: 6, fontWeight: pw.FontWeight.bold),
+  //       ),
+  //     );
+
+  // pw.Widget subHeader(String text) => pw.Container(
+  //       alignment: pw.Alignment.center,
+  //       padding: const pw.EdgeInsets.all(3),
+  //       child: pw.Text(
+  //         text,
+  //         textAlign: pw.TextAlign.center,
+  //         style: pw.TextStyle(fontSize: 5, fontWeight: pw.FontWeight.bold),
+  //       ),
+  //     );
+
+  // pw.Widget dataCell(String text) => pw.Container(
+  //       alignment: pw.Alignment.center,
+  //       padding: const pw.EdgeInsets.all(3),
+  //       child: pw.Text(
+  //         text,
+  //         style: const pw.TextStyle(fontSize: 5),
+  //       ),
+  //     );
+
+  // pw.Widget emptyCell() => pw.Container();
 }
-
-
-// report generation function
-//   Future<Uint8List> generatePurchaseReport(
-//       List<dynamic> jsonData, BuildContext context) async {
-//     final status = await Permission.storage.request();
-//     if (!status.isGranted) {
-//       ScaffoldMessenger.of(context).showSnackBar(
-//         const SnackBar(content: Text('Storage permission denied')),
-//       );
-//     }
-
-//     try {
-//       final pdf = pw.Document();
-//       final imageData = await rootBundle.load('assets/logob.png');
-//       final image = pw.MemoryImage(imageData.buffer.asUint8List());
-
-//       pdf.addPage(
-//         pw.MultiPage(
-//           pageFormat: PdfPageFormat(1600, PdfPageFormat.a4.height),
-//           margin: pw.EdgeInsets.fromLTRB(20, 50, 20, 0),
-//           build: (context) {
-//             return [
-//               pw.Row(children: [
-//                 pw.Image(image, width: 80, height: 80),
-//                 pw.SizedBox(
-//                   width: 30,
-//                 ),
-//                 pw.Container(
-//                   width: 1450,
-//                   child: pw.Column(children: [
-//                     pw.Center(
-//                       child: pw.Text(
-//                         'Marvel Agro Commodities',
-//                         style: pw.TextStyle(
-//                             fontSize: 23, fontWeight: pw.FontWeight.bold),
-//                       ),
-//                     ),
-//                     pw.Container(
-//                       color: PdfColors.grey300,
-//                       child: pw.Center(
-//                         child: pw.Text(
-//                           'Product Sales Report',
-//                           style: pw.TextStyle(
-//                               fontSize: 21, fontWeight: pw.FontWeight.bold),
-//                         ),
-//                       ),
-//                     ),
-//                     pw.Container(
-//                       alignment: pw.Alignment.center,
-//                       width: 1050,
-//                       child: pw.Text(
-//                           "From: 01-Aug-2025, Till Date: 27-Jun-2025",
-//                           style: pw.TextStyle(fontWeight: pw.FontWeight.bold)),
-//                     )
-//                   ]),
-//                 )
-//               ]),
-//               pw.SizedBox(height: 10),
-//               pw.Table(
-//                 border: pw.TableBorder.all(width: 0.5),
-//                 columnWidths: {
-//                   0: const pw.FixedColumnWidth(20),
-//                   1: const pw.FixedColumnWidth(22),
-//                   2: const pw.FixedColumnWidth(100),
-//                   3: const pw.FixedColumnWidth(100),
-//                   4: const pw.FixedColumnWidth(100),
-//                 },
-//                 children: [
-//                   // 🔹 Header Row 1
-//                   pw.TableRow(
-//                     children: [
-//                       // Account Code (merged vertically)
-//                       pw.Container(
-//                         alignment: pw.Alignment.center,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           "S No",
-//                           style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-//                           textAlign: pw.TextAlign.center,
-//                         ),
-//                         // We'll leave its spot blank in next header row
-//                       ),
-
-//                       // Account Title (merged vertically)
-//                       pw.Container(
-//                         alignment: pw.Alignment.center,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           "Node No",
-//                           style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-//                           textAlign: pw.TextAlign.center,
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.center,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           "Product Name",
-//                           style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-//                           textAlign: pw.TextAlign.center,
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.center,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           "Quality",
-//                           style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-//                           textAlign: pw.TextAlign.center,
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.center,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           "Type Name",
-//                           style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
-//                           textAlign: pw.TextAlign.center,
-//                         ),
-//                       ),
-//                       // "Opening" spans two columns → we use a nested table
-//                       pw.Table(
-//                         columnWidths: {
-//                           0: pw.FixedColumnWidth(44),
-//                           1: pw.FixedColumnWidth(50),
-//                           2: pw.FixedColumnWidth(45),
-//                           3: pw.FixedColumnWidth(50),
-//                           4: pw.FixedColumnWidth(30),
-//                           5: pw.FixedColumnWidth(40),
-//                         },
-//                         border: pw.TableBorder.all(width: 0),
-//                         children: [
-//                           pw.TableRow(
-//                             children: [
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "IN-HOUSE PURCHASES",
-//                                   style: pw.TextStyle(
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-
-//                                 // colSpan: 2, // doesn't exist — handled manually
-//                               ),
-//                               // filler
-//                             ],
-//                           ),
-//                           pw.TableRow(
-//                             children: [
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "No Of Bags",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "Ex Net Weight",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "Net Weight KGs",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "Billing Weight",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "Vehicles",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "Amount",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ],
-//                       ),
-
-//                       pw.Table(
-//                         columnWidths: {
-//                           0: pw.FixedColumnWidth(40),
-//                           1: pw.FixedColumnWidth(45),
-//                           2: pw.FixedColumnWidth(30),
-//                           3: pw.FixedColumnWidth(50),
-//                         },
-//                         border: pw.TableBorder.all(width: 0),
-//                         children: [
-//                           pw.TableRow(
-//                             children: [
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "OUT STATION",
-//                                   style: pw.TextStyle(
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-
-//                                 // colSpan: 2, // doesn't exist — handled manually
-//                               ),
-//                               // filler
-//                             ],
-//                           ),
-//                           pw.TableRow(
-//                             children: [
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "No Of Bags",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "Net Weight KGs",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "Vehicles",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                               pw.Container(
-//                                 alignment: pw.Alignment.center,
-//                                 padding: const pw.EdgeInsets.all(6),
-//                                 child: pw.Text(
-//                                   "Amount",
-//                                   style: pw.TextStyle(
-//                                       fontSize: 10,
-//                                       fontWeight: pw.FontWeight.bold),
-//                                   textAlign: pw.TextAlign.center,
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ],
-//                       ),
-//                     ],
-//                   ),
-
-//                   // 🔹 Header Row 2 (for Debit / Credit under Opening)
-
-//                   // 🔹 Data Rows
-//                 ],
-//               ),
-//               pw.Table(
-//                 border: pw.TableBorder.all(width: 0.5),
-//                 columnWidths: {
-//                   0: const pw.FixedColumnWidth(12.4),
-//                   1: const pw.FixedColumnWidth(13.7),
-//                   2: const pw.FixedColumnWidth(62.5),
-//                   3: const pw.FixedColumnWidth(62.5),
-//                   4: const pw.FixedColumnWidth(62.5),
-//                   5: const pw.FixedColumnWidth(27.5),
-//                   6: const pw.FixedColumnWidth(31),
-//                   7: const pw.FixedColumnWidth(28),
-//                   8: const pw.FixedColumnWidth(31.8),
-//                   9: const pw.FixedColumnWidth(17.5),
-//                   10: const pw.FixedColumnWidth(25),
-//                   11: const pw.FixedColumnWidth(25),
-//                   12: const pw.FixedColumnWidth(28),
-//                   13: const pw.FixedColumnWidth(19),
-//                   14: const pw.FixedColumnWidth(31.6),
-//                 },
-//                 children: reportLists.map((item) {
-//                   return pw.TableRow(
-//                     children: [
-//                       pw.Container(
-//                         alignment: pw.Alignment.center,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["S.No"] ?? "",
-//                           textAlign: pw.TextAlign.center,
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerLeft,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Node No"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerLeft,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Product Name"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerLeft,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Quality"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerLeft,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Type Name"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["No Of Bags"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Ex Net Weight"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Net Weight KGs"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Billing Weight"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Vehicles"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Amount"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Out No Of Bags"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Out Net Weight KGs"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Out Vehicles"] ?? "",
-//                         ),
-//                       ),
-//                       pw.Container(
-//                         alignment: pw.Alignment.centerRight,
-//                         padding: const pw.EdgeInsets.all(6),
-//                         child: pw.Text(
-//                           item["Out Amount"] ?? "",
-//                         ),
-//                       ),
-//                     ],
-//                   );
-//                 }).toList(),
-//               ),
-//               // pw.TableHelper.fromTextArray(
-//               //   headers:
-//               //       jsonData.isNotEmpty ? jsonData.first.keys.toList() : [],
-//               //   data: jsonData
-//               //       .map<List<dynamic>>(
-//               //           (item) => item.values.map((v) => v.toString()).toList())
-//               //       .toList(),
-//               //   columnWidths: {
-//               //     0: pw.FixedColumnWidth(70),
-//               //     1: pw.FixedColumnWidth(170),
-//               //     2: pw.FixedColumnWidth(90),
-//               //     3: pw.FixedColumnWidth(90),
-//               //   },
-//               //   headerAlignments: {
-//               //     0: pw.Alignment.center,
-//               //     1: pw.Alignment.center,
-//               //     2: pw.Alignment.center,
-//               //     3: pw.Alignment.center,
-//               //   },
-//               //   cellAlignments: {
-//               //     0: pw.Alignment.topLeft,
-//               //     1: pw.Alignment.topLeft,
-//               //     2: pw.Alignment.topRight,
-//               //     3: pw.Alignment.topRight,
-//               //   },
-//               //   headerStyle: pw.TextStyle(fontWeight: FontWeight.bold),
-//               // ),
-//             ];
-//           },
-//         ),
-//       );
-
-//       return pdf.save();
-
-//       // ✅ Save to Downloads
-//       //   final downloadsDir = Directory('/storage/emulated/0/Download');
-//       //   if (!await downloadsDir.exists())
-//       //     await downloadsDir.create(recursive: true);
-
-//       //   final filePath =
-//       //       '${downloadsDir.path}/update_after_post_report_${DateTime.now().millisecondsSinceEpoch}.pdf';
-//       //   final file = File(filePath);
-//       //   await file.writeAsBytes(await pdf.save());
-
-//       //   ScaffoldMessenger.of(context).showSnackBar(
-//       //     SnackBar(content: Text('✅ PDF saved in Downloads: $filePath')),
-//       //   );
-//     } catch (e, st) {
-//       debugPrint('PDF generation error: $e\n$st');
-//       ScaffoldMessenger.of(context).showSnackBar(
-//         SnackBar(content: Text('❌ Error: $e')),
-//       );
-//       return Uint8List(2);
-//     }
-//   }
-// }
